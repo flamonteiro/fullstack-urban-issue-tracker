@@ -51,6 +51,17 @@ The relational database (PostgreSQL) was structured to ensure data integrity and
 
 ---
 
+## Entity Relationship Model
+<img width="690" height="644" alt="modelo-t1bd-v1" src="https://github.com/user-attachments/assets/253a8bca-f23c-47ca-8de2-4fefc87d3838" />
+
+---
+
+## Use Cases
+<img width="764" height="410" alt="uc-cidadao" src="https://github.com/user-attachments/assets/66b1aaf2-6902-4563-9ff1-77537af49ec6" />
+<img width="675" height="394" alt="uc-admin" src="https://github.com/user-attachments/assets/5a3150fd-a5e9-4a51-919a-ed849d7b1e24" />
+
+---
+
 ## 🚀 How to Run the Project
 
 Follow the steps below to run the application locally in your development environment.
