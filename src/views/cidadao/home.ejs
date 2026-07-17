@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Área do Cidadão</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <div class="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-4 py-10">
+      <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+        <div class="mb-8 flex items-center justify-between gap-4">
+          <button type="button" onclick="history.back()" class="rounded-2xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700">Voltar</button>
+          <div>
+            <h1 class="text-3xl font-semibold">Olá, cidadão</h1>
+            <p class="mt-1 text-sm text-slate-600">Escolha uma ação para continuar.</p>
+          </div>
+          <a href="/logout" class="rounded-2xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700">Sair</a>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          <a href="/cidadao/ocorrencias/novo" class="rounded-3xl border border-slate-200 bg-sky-50 p-6 transition hover:border-sky-300 hover:bg-sky-100">
+            <h2 class="text-xl font-semibold text-sky-700">Criar ocorrência</h2>
+            <p class="mt-2 text-sm text-slate-600">Registre uma nova ocorrência vinculada ao seu usuário.</p>
+          </a>
+          <a href="/cidadao/ocorrencias" class="rounded-3xl border border-slate-200 bg-emerald-50 p-6 transition hover:border-emerald-300 hover:bg-emerald-100">
+            <h2 class="text-xl font-semibold text-emerald-700">Visualizar ocorrências</h2>
+            <p class="mt-2 text-sm text-slate-600">Consulte, edite ou apague as ocorrências cadastradas por você.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

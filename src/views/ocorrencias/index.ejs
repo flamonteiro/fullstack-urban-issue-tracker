@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ocorrências</title>
+    <link href="/styles.css" rel="stylesheet" />
+    <!-- Verifique se esta linha existe no seu layout principal ou index.ejs -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <div class="mx-auto max-w-7xl px-4 py-8">
+      <header class="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 class="text-3xl font-semibold">Ocorrências</h1>
+          <p class="mt-1 text-sm text-slate-600">Visualize as ocorrências com categorias, situação e endereço.</p>
+        </div>
+        <a
+          href="/ocorrencias/novo"
+          class="inline-flex items-center justify-center rounded-xl bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow hover:bg-sky-700"
+        >
+          Nova Ocorrência
+        </a>
+      </header>
+
+      <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+        <table class="min-w-full divide-y divide-slate-200 text-left">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Título</th>
+              <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Categoria</th>
+              <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Situação</th>
+              <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Endereço</th>
+              <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Criado em</th>
+              <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Usuário</th>
+              <% if (user && user.idPerfil === 1) { %>
+                <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Ações</th>
+              <% } %>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 bg-white">
+            <% if (!ocorrencias || ocorrencias.length === 0) { %>
+              <tr>
+                <td colspan="7" class="px-4 py-10 text-center text-sm text-slate-500">Nenhuma ocorrência registrada.</td>
+              </tr>
+            <% } else { %>
+              <% ocorrencias.forEach((ocorrencia) => { %>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-4 align-top text-sm text-slate-700"><%= ocorrencia.titulo %></td>
+                  <td class="px-4 py-4 align-top text-sm text-slate-700"><%= ocorrencia.nomecategoria %></td>
+                  <td class="px-4 py-4 align-top text-sm text-slate-700"><%= ocorrencia.situacao %></td>
+                  <td class="px-4 py-4 align-top text-sm text-slate-700">
+                    <div><%= ocorrencia.rua %>, <%= ocorrencia.numero %></div>
+                    <div class="text-slate-500"><%= ocorrencia.bairro %> - <%= ocorrencia.cep %></div>
+                    <% if (ocorrencia.referencia) { %>
+                      <div class="text-slate-500">Ref.: <%= ocorrencia.referencia %></div>
+                    <% } %>
+                  </td>
+                  <td class="px-4 py-4 align-top text-sm text-slate-700">
+                    <%= new Date(ocorrencia.dataCriacao).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' }) %>
+                  </td>
+                  <td class="px-4 py-4 align-top text-sm text-slate-700"><%= ocorrencia.usuario_email %></td>
+                  <% if (user && user.idPerfil === 1) { %>
+                    <td class="px-4 py-4 align-top text-sm">
+                      <div class="flex flex-wrap gap-2">
+                        <a
+                          href="/ocorrencias/<%= ocorrencia.idocorrencia %>/editar"
+                          class="rounded-lg bg-amber-500 px-3 py-2 text-white hover:bg-amber-600"
+                        >
+                          Editar
+                        </a>
+                        <form action="/ocorrencias/<%= ocorrencia.idocorrencia %>/excluir" method="post" class="inline">
+                          <button
+                            type="submit"
+                            class="rounded-lg bg-rose-600 px-3 py-2 text-white hover:bg-rose-700"
+                          >
+                            Excluir
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  <% } %>
+                </tr>
+              <% }); %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

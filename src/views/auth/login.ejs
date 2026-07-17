@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-100">
+    <div class="flex min-h-screen flex-col lg:flex-row">
+      <div class="flex-1 bg-sky-700 p-10 text-white lg:flex lg:items-center lg:justify-center">
+        <div class="max-w-md">
+          <h1 class="text-4xl font-semibold">Sistema de Ocorrências</h1>
+          <p class="mt-4 text-lg text-sky-100">Acompanhe, registre e gerencie demandas com segurança e organização.</p>
+        </div>
+      </div>
+      <div class="flex flex-1 items-center justify-center bg-white p-8">
+        <div class="w-full max-w-md rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
+          <h2 class="text-2xl font-semibold text-slate-900">Log In</h2>
+          <p class="mt-2 text-sm text-slate-600">Entre com suas credenciais para acessar o sistema.</p>
+
+          <% if (error) { %>
+            <div class="mt-4 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700"><%= error %></div>
+          <% } %>
+
+          <!-- <div class="mb-4 flex justify-end">
+            <button type="button" onclick="history.back()" class="rounded-2xl border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700">Voltar</button>
+          </div> -->
+
+          <br>
+          
+          <form action="/login" method="post" class="mt-2 space-y-4">
+            <div>
+              <label for="email" class="mb-2 block text-sm font-medium text-slate-700">E-mail</label>
+              <input id="email" name="email" type="email" required class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100" />
+            </div>
+            <div>
+              <label for="senha" class="mb-2 block text-sm font-medium text-slate-700">Senha</label>
+              <input id="senha" name="senha" type="password" required class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100" />
+            </div>
+            <button type="submit" class="w-full rounded-2xl bg-sky-600 px-4 py-3 text-sm font-semibold text-white hover:bg-sky-700">Log In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
